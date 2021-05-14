@@ -1,0 +1,48 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id              String    @id @default(uuid())
+  minecraftId     String?   @unique
+  discordId       String?   @unique
+  sessions        Session[]
+  reporterReports Report[]  @relation("Reporter")
+  reporteeReports Report[]  @relation("Reportee")
+  createdAt       DateTime  @default(now())
+}
+
+model Session {
+  id        String      @id @default(uuid())
+  user      User        @relation(fields: [userId], references: [id])
+  userId    String
+  secret    String
+  type      SessionType
+  createdAt DateTime    @default(now())
+}
+
+enum SessionType {
+  OVERLAY
+}
+
+model Report {
+  id         String       @id @default(uuid())
+  reporter   User         @relation("Reporter", fields: [reporterId], references: [id])
+  reporterId String
+  reportee   User         @relation("Reportee", fields: [reporteeId], references: [id])
+  reporteeId String
+  reason     ReportReason
+  createdAt  DateTime     @default(now())
+
+  @@unique([reporterId, reporteeId])
+}
+
+enum ReportReason {
+  HACKER
+  SNIPER
+}

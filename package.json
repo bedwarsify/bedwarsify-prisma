@@ -1,0 +1,11 @@
+{
+  "name": "bedwarsify-prisma",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "migrate": "prisma migrate dev --create-only --skip-generate"
+  },
+  "devDependencies": {
+    "prisma": "^2.22.1"
+  }
+}
