@@ -46,3 +46,8 @@ enum ReportReason {
   HACKER
   SNIPER
 }
+
+model DiscordGuild {
+  id           String  @id
+  linkedRoleId String?
+}
