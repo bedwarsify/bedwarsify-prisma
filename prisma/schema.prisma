@@ -37,6 +37,7 @@ model Report {
   reportee   User         @relation("Reportee", fields: [reporteeId], references: [id])
   reporteeId String
   reason     ReportReason
+  weight     Int
   createdAt  DateTime     @default(now())
 
   @@unique([reporterId, reporteeId])
