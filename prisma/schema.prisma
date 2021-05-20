@@ -14,7 +14,16 @@ model User {
   sessions        Session[]
   reporterReports Report[]  @relation("Reporter")
   reporteeReports Report[]  @relation("Reportee")
+  role            UserRole  @default(NONE)
   createdAt       DateTime  @default(now())
+}
+
+enum UserRole {
+  NONE
+  NITRO_BOOSTER
+  PARTNER
+  COMMUNITY_MANAGER
+  DEVELOPER
 }
 
 model Session {
