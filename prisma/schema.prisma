@@ -17,6 +17,7 @@ model User {
   role            UserRole  @default(NONE)
   customTagText   String?
   customTagColor  Int?
+  canReport       Boolean   @default(true)
   createdAt       DateTime  @default(now())
 }
 
