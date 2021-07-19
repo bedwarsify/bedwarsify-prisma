@@ -74,4 +74,6 @@ model DiscordLevelRole {
   guildId String
 
   guild DiscordGuild @relation(fields: [guildId], references: [id])
+
+  @@unique([level, guildId])
 }
