@@ -64,4 +64,14 @@ enum ReportReason {
 model DiscordGuild {
   id           String  @id
   linkedRoleId String?
+
+  levelRoles DiscordLevelRole[]
+}
+
+model DiscordLevelRole {
+  id      String @id
+  level   Int
+  guildId String
+
+  guild DiscordGuild @relation(fields: [guildId], references: [id])
 }
