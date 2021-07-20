@@ -8,17 +8,18 @@ generator client {
 }
 
 model User {
-  id              String    @id @default(uuid())
-  minecraftId     String?   @unique
-  discordId       String?   @unique
-  sessions        Session[]
-  reporterReports Report[]  @relation("Reporter")
-  reporteeReports Report[]  @relation("Reportee")
-  role            UserRole  @default(NONE)
-  customTagText   String?
-  customTagColor  Int?
-  canReport       Boolean   @default(true)
-  createdAt       DateTime  @default(now())
+  id                  String    @id @default(uuid())
+  minecraftId         String?   @unique
+  discordId           String?   @unique
+  sessions            Session[]
+  reporterReports     Report[]  @relation("Reporter")
+  reporteeReports     Report[]  @relation("Reportee")
+  role                UserRole  @default(NONE)
+  customTagText       String?
+  customTagColor      Int?
+  canReport           Boolean   @default(true)
+  lastSyncedDiscordAt DateTime?
+  createdAt           DateTime  @default(now())
 }
 
 enum UserRole {
