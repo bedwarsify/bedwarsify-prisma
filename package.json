@@ -7,7 +7,7 @@
     "migrate": "prisma migrate dev --create-only --skip-generate"
   },
   "dependencies": {
-    "@prisma/client": "^2.26.0",
+    "@prisma/client": "^2.30.2",
     "fs-extra": "^10.0.0"
   },
   "devDependencies": {
